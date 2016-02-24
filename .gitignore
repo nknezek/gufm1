@@ -1,0 +1,12 @@
+# don't track auto-generated files
+*.pyc
+*.DS_Store
+
+# don't track documentation on packages used
+doc/**
+*.pdf
+*.png
+*.xls
+*.xlsx
+
+.idea/**
