@@ -1,8 +1,6 @@
 GUFM1
 =====
-This package provides Python code to calculate magnetic fields of Andrew Jackson's [GUFM1](http://jupiter.ethz.ch/~cfinlay/gufm1.html) historical magnetic field model.
-
-This code was largely based off of the Fortran code *eval_field.f* found on his website, but is completely re-written in native Python.
+This package provides Python code to calculate magnetic fields of Andrew Jackson's [GUFM1](http://jupiter.ethz.ch/~cfinlay/gufm1.html) historical magnetic field model. This code was largely based off of the Fortran code *eval_field.f* found on his website, but is completely re-written in native Python.
 
 Usage
 -----
