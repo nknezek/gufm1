@@ -244,10 +244,10 @@ def Pml(x, l, m):
     Associated Legendre Polynomial - Schmidt Quasi-Normalization
     ============================================================
     Returns the evaulated Associated Legendre Polynomial of degree n and order m at location x.
-    
+
     This function evaluates the Associated Legendre Polynomials with Schmidt Quasi Normalization as defined in Schmidt (1917, p281).
-    It uses the scipy built in associated legendre polynomials which have Ferrer's normalization and converts the normalization.    
-    
+    It uses the scipy built in associated legendre polynomials which have Ferrer's normalization and converts the normalization.
+
     Inputs
     -------
     x:
@@ -257,27 +257,27 @@ def Pml(x, l, m):
     m:
         Order of associated legendre polynomial
 
-    Returns 
+    Returns
     -------
     The value of the polynomial at location specified. (float)
-    
+
     Associated Legendre Polynomial Normalizations:
     ------
-    
+
     Schmidt Quasi-Normalized:
         P^m_l(x) = sqrt{2*(l-m)!/(l+m)!}(1-x^2)^{m/2}(d/dx)^2 P_l(x)
-    
+
     Ferrer's (only for reference):
         P^m_n(x) = (-1)^m(1-x^2)^{m/2}(d/dx)^2 P_n(x)
-        
+
     """
     return (2*_factorial(l-m)/_factorial(l+m))**0.5/(-1)**m*_lpmv(m,l,x)
 
 def Br_for_ml(r,th,ph,g,h,m,l, a=6371.2):
     """
     Calculates the Br contribution for one set of m,l, using the potential field.
-        
-    Inputs 
+
+    Inputs
     ------
     r:
         radius location (km)
@@ -287,30 +287,30 @@ def Br_for_ml(r,th,ph,g,h,m,l, a=6371.2):
         longitude location (radians)
     g:
         Gauss coefficient (cos term)
-    h: 
+    h:
         Gauss coefficient (sin term)
     m:
         Order of calculation
     l:
         Degree of calculation
-    a: 
+    a:
         Radius (km) at which Gauss coefficients are calculated
 
     Returns
     -------
-    Br contribution in Tesla at a particular point from a particular degree and order.     
+    Br contribution in Tesla at a particular point from a particular degree and order.
     """
     return (l+1.)*a**(l+2.)/abs(r)**(l+2.)*(g*_cos(m*ph) + h*_sin(m*ph))*Pml(_cos(th), l, m)
-    
+
 def Br(r,th,ph, g_dict, h_dict, l_max=None):
     '''
     Calculates the total radial magnetic field at a particular location, give a dictionary of gauss coefficients.
-        
-    Inputs 
+
+    Inputs
     ------
     r:
         radius location (km)
-    th: 
+    th:
         latitude location (radians)
     ph:
         longitude location (radians)
@@ -320,7 +320,7 @@ def Br(r,th,ph, g_dict, h_dict, l_max=None):
         dictionary of h (sin) Gauss coefficients, ordered as h[l][m]. h coefficients for m=0 should be explicitly included as 0.0
     l_max:
         maximum degree to use in calculation. By default uses all supplied degrees.
-        
+
     Returns
     -------
     Total Br at a particular point (Tesla)
@@ -335,13 +335,13 @@ def Br(r,th,ph, g_dict, h_dict, l_max=None):
 
 def Rl(l, g, h, r=6371.2, a=6371.2):
     '''
-    Calculates the mean-square field for a particular degree (l) 
+    Calculates the mean-square field for a particular degree (l)
     '''
     Rsum = 0
     for m in g[l].iterkeys():
         Rsum += (l+1)*(g[l][m]**2+h[l][m]**2)
     return Rsum*(a/r)**(2.*l+4.)
-    
+
 def Rl_list(g,h,r=6371.2, a=6371.2):
     '''
     Calculates the mean-square field for all degrees (l)
@@ -350,7 +350,7 @@ def Rl_list(g,h,r=6371.2, a=6371.2):
     for l in g.iterkeys():
         Rll.append(Rl(l, g, h, r=r, a=a))
     return Rll
-    
+
 def Br_rms_sq(Rl_list):
     '''
     Calculates the means-square radial field at a particular radius
@@ -358,6 +358,5 @@ def Br_rms_sq(Rl_list):
     Br_sum = 0.
     for l,Rl in zip(range(1,len(Rl_list)+1), Rl_list):
         Br_sum += (l+1.)/(2.*l+1)*Rl
-        print l, Rl/1e10, Br_sum**0.5/1e6
     return Br_sum
 
