@@ -11,7 +11,7 @@ from numpy import sin as _sin
 from numpy import cos as _cos
 from numpy import zeros as _zeros
 
-def read_gufm1tk_data(filename):
+def read_gufm1tk_data(filename='gufm1_1990.txt'):
     '''
     Reads in gufm1 data from one timeknot and stores the data in two dictionaries for each (g,h) Gauss coefficient.
 
@@ -36,7 +36,7 @@ def read_gufm1tk_data(filename):
                 data.append(float(x))
     return l_max, data
 
-def read_gufm1tk_to_gh(filename):
+def read_gufm1tk_to_gh(filename='gufm1_1990.txt'):
     '''
     Reads in gufm1 data from one timeknot and stores the data in two dictionaries for each (g,h) Gauss coefficient.
 
@@ -70,7 +70,17 @@ def read_gufm1tk_to_gh(filename):
             i += 1
     return g, h
 
-def read_gufm_all(filename):
+def read_gufm_all(filename='gufm1_data.txt'):
+    '''
+
+    Parameters
+    ----------
+    filename
+
+    Returns
+    -------
+
+    '''
     with open(filename,'rb') as f:
         f.readline()
         line1 = f.readline().split()
@@ -92,7 +102,7 @@ def read_gufm_all(filename):
                 gt[gi:gi+4] = [float(x) for x in line.split()]
                 gi += 4
     gt_out = gt.reshape(n, nspl, order='F')
-    return gt_out, tknts, l_max, nspl, n
+    return gt_out, tknts, l_max, nspl
 
 def interval(tknts, time):
     '''
@@ -160,7 +170,7 @@ def bspline(time, tknts, jorder=4):
         spline[j+1] = saved
     return nleft, spline
 
-def calculate_gt_raw(gt, spl, nleft, l_max, jorder):
+def calculate_gt_raw(gt, spl, nleft, l_max=14, jorder=4):
     '''
     Calculates the Gauss Coefficients in raw ordering given the parameters calculated by inverval() and bspline().
 
@@ -187,7 +197,7 @@ def calculate_gt_raw(gt, spl, nleft, l_max, jorder):
             g_raw[k] += spl[j]*gt[k,j+nleft-4]
     return g_raw
 
-def convert_data_to_gh(data, l_max):
+def convert_data_to_gh(data, l_max=14):
     '''
     Converts data computed for a time to g, h dictionaries
 
@@ -222,10 +232,10 @@ def convert_data_to_gh(data, l_max):
             i += 1
     return g, h
 
-def get_gh_at_t(filename, time, jorder=4):
-    gt, tknts, l_max, nspl, n = read_gufm_all(filename)
+def get_gh_at_t(time, filename='gufm1_data.txt',  jorder=4):
+    gt, tknts, l_max, nspl = read_gufm_all(filename)
     nleft, spl = bspline(time, tknts, jorder=jorder)
-    data = calculate_gt_raw(gt, spl, nleft, n, jorder)
+    data = calculate_gt_raw(gt, spl, nleft, l_max=l_max, jorder=jorder)
     g_dict ,h_dict = convert_data_to_gh(data)
     return g_dict, h_dict
 
