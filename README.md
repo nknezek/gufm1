@@ -8,7 +8,7 @@ To use, simply clone the git directory, then `import gufm1` to begin using the m
 
 Users should be able to be calculate parameters for any year from 1590 to 1990 from the main gufm1_data.txt file, but you can also use data files from individual years downloaded directly from his website if desired.
 
-For examples, see the [GUFM1 Demonstration](GUFM1 Demonstration.ipynb) ipython notebook.
+For examples, see the [GUFM1 Demonstration](Examples/GUFM1 Demonstration.ipynb) ipython notebook.
 
 
 Citations
