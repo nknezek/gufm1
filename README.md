@@ -4,7 +4,7 @@ This package provides Python code to calculate magnetic fields of Andrew Jackson
 
 Usage
 -----
-To use, simply clone the git directory, then `import gufm1` to begin using the methods. A few different routines are currently available, allowing users to calculate radial field strength at any spatial location, rms field strength over the whole core, and other metrics of core power spectrum.
+To use, simply clone the git directory, then either run the code from the directory directly, or run `python setup.py install` to allow for importing the method in any python project. A few different routines are currently available, allowing users to calculate radial field strength at any spatial location, rms field strength over the whole core, and other metrics of core power spectrum.
 
 Users should be able to be calculate parameters for any year from 1590 to 1990 from the main gufm1_data.txt file, but you can also use data files from individual years downloaded directly from his website if desired.
 
