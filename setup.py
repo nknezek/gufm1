@@ -7,7 +7,7 @@ metadata = dict( name= 'gufm1',
                  license='MIT',
                  long_description='',
                  packages = ['gufm1'],
-                 package_dir = {'gufm1': 'gufm1'}
+                 package_dir = {'gufm1': 'gufm1'},
                  package_data = {'gufm1': ['data/*.txt']}
                )
 
