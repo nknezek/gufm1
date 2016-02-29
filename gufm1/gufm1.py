@@ -11,7 +11,7 @@ from numpy import sin as _sin
 from numpy import cos as _cos
 from numpy import zeros as _zeros
 
-def read_gufm1tk_data(filename='gufm1_1990.txt'):
+def read_gufm1tk_data(filename='./data/gufm1_1990.txt'):
     '''
     Reads in gufm1 data from one timeknot and stores the data in two dictionaries for each (g,h) Gauss coefficient.
 
@@ -36,7 +36,7 @@ def read_gufm1tk_data(filename='gufm1_1990.txt'):
                 data.append(float(x))
     return l_max, data
 
-def read_gufm1tk_to_gh(filename='gufm1_1990.txt'):
+def read_gufm1tk_to_gh(filename='./data/gufm1_1990.txt'):
     '''
     Reads in gufm1 data from one timeknot and stores the data in two dictionaries for each (g,h) Gauss coefficient.
 
@@ -70,7 +70,7 @@ def read_gufm1tk_to_gh(filename='gufm1_1990.txt'):
             i += 1
     return g, h
 
-def read_gufm_all(filename='gufm1_data.txt'):
+def read_gufm_all(filename='./data/gufm1_data.txt'):
     '''
 
     Parameters
@@ -232,7 +232,7 @@ def convert_data_to_gh(data, l_max=14):
             i += 1
     return g, h
 
-def get_gh_at_t(time, filename='gufm1_data.txt',  jorder=4):
+def get_gh_at_t(time, filename='./data/gufm1_data.txt',  jorder=4):
     gt, tknts, l_max, nspl = read_gufm_all(filename)
     nleft, spl = bspline(time, tknts, jorder=jorder)
     data = calculate_gt_raw(gt, spl, nleft, l_max=l_max, jorder=jorder)
