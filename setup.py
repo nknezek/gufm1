@@ -1,12 +1,14 @@
 metadata = dict( name= 'gufm1',
                  version = 0.1,
                  description='Functions to calculate Historial Magnetic Field for the Earth using GUFM1',
-                 url='',
+                 url='https://github.com/nknezek/gufm1',
                  author='Nicholas Knezek',
                  author_email='nknezek@berkeley.edu',
                  license='MIT',
                  long_description='',
                  packages = ['gufm1'],
+                 package_dir = {'gufm1': 'gufm1'}
+                 package_data = {'gufm1': ['data/*.txt']}
                )
 
 #Try to use setuptools in order to check dependencies.
