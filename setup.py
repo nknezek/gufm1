@@ -8,7 +8,7 @@ metadata = dict( name= 'gufm1',
                  long_description='',
                  packages = ['gufm1'],
                  package_dir = {'gufm1': 'gufm1'},
-                 data_files = [('gufm1_data',['data/gufm1_data.txt'])]
+                 data_files = [('gufm1_data',['gufm1/data/gufm1_data.txt'])]
                )
 
 #Try to use setuptools in order to check dependencies.
