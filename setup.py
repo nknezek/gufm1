@@ -1,6 +1,6 @@
 metadata = dict( name= 'gufm1',
-                 version = 0.1,
-                 description='Functions to calculate Historial Magnetic Field for the Earth using GUFM1',
+                 version = '0.1',
+                 description='Functions to calculate historial magnetic field for the Earth using GUFM1',
                  url='https://github.com/nknezek/gufm1',
                  author='Nicholas Knezek',
                  author_email='nknezek@berkeley.edu',
