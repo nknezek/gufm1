@@ -1,6 +1,7 @@
 # don't track auto-generated files
 *.pyc
 *.DS_Store
+*.ipynb_checkpoints
 
 # don't track documentation on packages used
 doc/**
