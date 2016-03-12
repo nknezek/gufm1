@@ -1,1 +1,1 @@
-from gufm1 import *
+from .gufm1 import *
