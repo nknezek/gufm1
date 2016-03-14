@@ -12,7 +12,7 @@ from numpy import cos as _cos
 from numpy import zeros as _zeros
 import os
 
-data_file = os.path.dirname(os.path.abspath(__file__)) + '/data/gufm1.txt'
+data_file = os.path.dirname(os.path.abspath(__file__)) + '/data/gufm1_data.txt'
 
 def read_gufm1tk_data(filename):
     '''

@@ -8,7 +8,7 @@ metadata = dict( name= 'gufm1',
                  long_description='Functions to calculate historial magnetic field for the Earth using GUFM1',
                  packages = ['gufm1'],
                  package_dir = {'gufm1': 'gufm1'},
-                 package_data = {'gufm1_data':['data/*.txt']},
+                 package_data = {'gufm1/data':['data/*.txt']},
                  install_requires = ['numpy', 'scipy'],
                )
 
