@@ -341,7 +341,7 @@ def Rl(l, g, h, r=6371.2, a=6371.2):
     Calculates the mean-square field for a particular degree (l)
     '''
     Rsum = 0
-    for m in g[l].iterkeys():
+    for m in g[l].keys():
         Rsum += (l+1)*(g[l][m]**2+h[l][m]**2)
     return Rsum*(a/r)**(2.*l+4.)
 
@@ -350,7 +350,7 @@ def Rl_list(g,h,r=6371.2, a=6371.2):
     Calculates the mean-square field for all degrees (l)
     '''
     Rll = []
-    for l in g.iterkeys():
+    for l in g.keys():
         Rll.append(Rl(l, g, h, r=r, a=a))
     return Rll
 
