@@ -10,7 +10,6 @@ metadata = dict( name= 'gufm1',
                  package_dir = {'gufm1': 'gufm1'},
                  package_data = {'gufm1_data':['data/*.txt']},
                  install_requires = ['numpy', 'scipy'],
-                 include_package_data = True
                )
 
 
