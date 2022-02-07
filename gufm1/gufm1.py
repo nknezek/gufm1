@@ -5,7 +5,7 @@ Created on Tue Feb 23 11:52:39 2016
 @author: nknezek
 """
 
-from scipy.misc import factorial as _factorial
+from scipy.special import factorial as _factorial
 from scipy.special import lpmv as _lpmv
 from numpy import sin as _sin
 from numpy import cos as _cos
